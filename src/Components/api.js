@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 
@@ -12,11 +12,42 @@ function Api() {
       }
     );
   };
+
+
+  /* 
+  useEffect function is run only once on page load.
+  Earlier you had to click refresh button to call getJoke function
+  However with this change getJoke will be called on page load and joke variable 
+  will be initialized with api values
+  */
+  useEffect(() => {
+
+    getJoke()
+
+    // assuming joke is integer
+
+    /*
+    if (joke > 30) {
+        // call you twillio message function
+        // sendSmsTwiilio(username, mobileNumber)
+    } else {
+        // console.log('not sending any sms as usage within quota limit')
+    }
+    */
+
+
+
+  }, [])
+
+
   return (
     <div className="Api">
-          Volume = {joke} <button onClick = {getJoke}>Refresh</button>
+
+      {joke === "" ? <p>Loading...</p> : <p> Volume = {joke} </p>}
+
+      <button onClick={getJoke}>Refresh</button>
     </div>
-    )
+  )
 }
 
 export default Api;

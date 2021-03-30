@@ -11,8 +11,9 @@ body {
 
 .Sidebar {
   height: 100%;
-  width: 18%;
+  width: 100%;
   background-color: rgb(48, 48, 83);
+  display: inline-block;
 }
 
 .SidebarList {
